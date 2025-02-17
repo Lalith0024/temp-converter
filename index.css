@@ -1,66 +1,80 @@
-h1{
+
+body {
+    padding: 0;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color:beige;
     display: flex;
     justify-content: center;
     align-items: center;
-  
-    
-    
-    color: #000;
-    font-family: 'Courier New', Courier, monospace;
-}
-main{
+    min-height: 100vh;
     text-align: center;
-    background-color: antiquewhite;
-    padding: 25px;
-    margin:20px;
-    box-shadow: 5px 5px 15px hsl(0,0%,0%,0.3);
-
-  
-
-
-}
-body{
-    padding: 0;
-    margin: 0;
+    transition: background-color 0.5s;
+ 
     
 }
-input[type = "text"]{
-    width: 200px;
-    height: 30px;
+
+main {
+    background-color: #ffebcd;
+    padding: 45px;
+    border-radius: 25px;
+    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.2);
+    width: 420px;
+    height: 420px;
     text-align: center;
-    border-radius:15px ;
-    transition: all 0.3s ease;
+    transition: transform 0.3s;
+}
 
+main:hover {
+    transform: scale(1.02);
 }
-input[type = "Text"]:hover{
-    transform: scale(1.1);
-    
-    
+
+input[type="text"] {
+    height: 32px;
+    width: 250px;
+    border-radius: 24px;
+    padding: 5px;
+    font-size: 16px;
+    text-align: center;
+    border: 2px solid #bdbdbd;
+    transition: box-shadow 0.3s;
 }
-button{
-    height: 30px;
-    width: 80px;
+
+input[type="text"]:hover, input[type="text"]:focus {
+    box-shadow: 0px 0px 10px rgba(0, 150, 136, 0.5);
+    outline: none;
+}
+
+button {
+    height: 36px;
+    width: 120px;
+    font-size: 16px;
+    border-radius: 18px;
+    border: none;
     cursor: pointer;
-    transition: all 0.3s ease;
-
-}
-/* button:hover{
-    transform: scale(1.2);
-    background-color: lightgreen;
-    border-color: navajowhite;
-} */
-/* #result{
-    /* padding-top: 30px;
-    font-weight: bold;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 1.6rem; */
-
- #result {
-    margin-top: 20px;
-    font-size: 18px;
-    font-weight: bold;
-
-    
+    background-color: #4caf50;
+    color: white;
+    transition: all 0.3s;
+    margin-top: 18px;
 }
 
+button:hover {
+    background-color: #45a049;
+    transform: translateY(-3px);
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+}
 
+#result {
+    font-size: 26px;
+    font-weight: bold;
+    color: #2c3e50;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+    text-align: center;
+}
+
+#result.show {
+    opacity: 1;
+    transform: translateY(0);
+}
