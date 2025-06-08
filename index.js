@@ -25,12 +25,12 @@ function convert() {
 
     if (radio1.checked) {
         converted = num * 9 / 5 + 32;
-        emoji = converted > 68 ? "🥵" : "🥶";
-        showResult(`${converted.toFixed(1)} °F ${emoji}`);
+        
+        showResult(`The converted value for ${num}°C is ${converted.toFixed(1)} °F`);
     } else if (radio2.checked) {
         converted = (num - 32) * 5 / 9;
-        emoji = converted > 20 ? "" : "🥶";
-        showResult(`${converted.toFixed(1)} °C ${emoji}`);
+        
+        showResult(`The converted value for ${num}°F is ${converted.toFixed(1)} °C`);
     } else {
         showResult("PLEASE SELECT A UNIT 🥹");
     }
@@ -39,6 +39,6 @@ function convert() {
 function showResult(text) {
     result.textContent = text;
     result.classList.remove("show");
-    void result.offsetWidth; // Restart animation
+    void result.offsetWidth; 
     result.classList.add("show");
 }
