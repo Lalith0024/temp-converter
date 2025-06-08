@@ -1,4 +1,6 @@
+/* Global Reset and Theme Setup */
 body {
+    line-height: 20px;
     margin: 0;
     padding: 0;
     background-color: #000;
@@ -9,22 +11,24 @@ body {
     min-height: 100vh;
     color: #0ff;
     background-image: linear-gradient(to right, #000, #011);
-    overflow: hidden;
+    overflow-x: hidden;
     animation: fadeIn 1s ease-in;
 }
 
-/* Page fade-in effect */
+/* Page Entrance Animation */
 @keyframes fadeIn {
-    from { opacity: 0; transform: scale(0.98); }
+    from { opacity: 0; transform: scale(0.95); }
     to { opacity: 1; transform: scale(1); }
 }
 
+/* Container Box */
 main {
     background-color: rgba(0, 255, 255, 0.05);
     border: 2px solid #0ff;
     border-radius: 10px;
     padding: 50px;
     width: 480px;
+    max-width: 90vw;
     box-shadow: 0 0 25px #0ff;
     text-shadow: 0 0 5px #0ff;
     transition: transform 0.4s ease-in-out;
@@ -32,20 +36,15 @@ main {
 }
 
 @keyframes slideUp {
-    from {
-        transform: translateY(60px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
+    from { transform: translateY(60px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
 }
 
 main:hover {
-    transform: scale(1.05);
+    transform: scale(1.03);
 }
 
+/* Input Field */
 input[type="text"] {
     background: black;
     color: #0ff;
@@ -53,29 +52,47 @@ input[type="text"] {
     border-radius: 10px;
     padding: 10px 20px;
     font-size: 18px;
-    width: 280px;
+    width: 100%;
+    box-sizing: border-box;
     transition: 0.3s ease;
     animation: glowPulse 3s infinite alternate;
 }
 
 @keyframes glowPulse {
-    from {
-        box-shadow: 0 0 10px #0ff;
-    }
-    to {
-        box-shadow: 0 0 20px #0ff;
-    }
+    from { box-shadow: 0 0 10px #0ff; }
+    to { box-shadow: 0 0 20px #0ff; }
 }
 
 input[type="text"]:focus {
     outline: none;
-    box-shadow: 0 0 20px #0ff, 0 0 10px #0ff inset;
+    box-shadow: 0 0 25px #0ff, 0 0 10px #0ff inset;
 }
 
+/* Radio Buttons */
+input[type="radio"] {
+    accent-color: #0ff;
+    transform: scale(1.2);
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+label {
+    display: inline-block;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+label:hover {
+    color: #00ffffaa;
+    text-shadow: 0 0 5px #0ff;
+}
+
+/* Submit Button */
 button {
     background: none;
     border: 2px solid #0ff;
-    padding: 10px 25px;
+    padding: 12px 30px;
     border-radius: 10px;
     color: #0ff;
     font-size: 16px;
@@ -110,10 +127,11 @@ button:hover::after {
 
 button:hover {
     color: black;
-    transform: scale(1.05);
+    transform: scale(1.08);
     box-shadow: 0 0 20px #0ff;
 }
 
+/* Result Output */
 #result {
     margin-top: 25px;
     font-size: 24px;
@@ -121,6 +139,7 @@ button:hover {
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 0.6s ease, transform 0.5s ease;
+    text-align: center;
 }
 
 #result.show {
@@ -128,4 +147,28 @@ button:hover {
     transform: translateY(0);
 }
 
+/* Responsive Enhancements */
+@media (max-width: 600px) {
+    main {
+        padding: 30px 20px;
+        width: 90vw;
+    }
 
+    h1 {
+        font-size: 20px;
+        text-align: center;
+    }
+
+    input[type="text"] {
+        font-size: 16px;
+    }
+
+    button {
+        font-size: 14px;
+        padding: 10px 20px;
+    }
+
+    #result {
+        font-size: 20px;
+    }
+}

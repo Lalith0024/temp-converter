@@ -1,28 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Temperature Converter</title>
-    <link rel="stylesheet" href="index.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Temperature Converter</title>
+  <link rel="stylesheet" href="index.css" />
 </head>
 <body>
-    <main>
-        <h1>TEMPERATURE TERMINAL</h1>
-        <form onsubmit="event.preventDefault(); convert();">
-            <input type="text" id="textbox" placeholder="Please enter Temperature" />
-            <br><br>
-            <br>
-            <input type="radio" id="tofar" name="temp"> Celsius to Fahrenheit
-            <br><br>
-            <input type="radio" id="tocel" name="temp"> Fahrenheit to Celsius
-            <br><br>
-            <button type="submit">Submit</button>
-        </form>
-        <br>
-        <p style="font-weight: bold;">Awaiting input...</p>
-        <p id="result"></p>
-    </main>
-    <script src="index.js"></script>
+  <main>
+    <h1>TEMPERATURE TERMINAL</h1>
+    <br></br>
+    <form onsubmit="event.preventDefault(); convert();">
+      <input type="text" id="textbox" placeholder="Please enter Temperature" />
+      <br><br>
+      <label><input type="radio" id="tofar" name="temp"> Celsius to Fahrenheit</label>
+      <br><br>
+      <label><input type="radio" id="tocel" name="temp"> Fahrenheit to Celsius</label>
+      <br><br>
+      <button type="submit">Submit</button>
+    </form>
+    <br>
+    <p style="font-weight: bold;">Awaiting input...</p>
+    <p id="result"></p>
+  </main>
+  <script src="index.js"></script>
 </body>
 </html>
