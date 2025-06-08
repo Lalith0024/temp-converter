@@ -1,80 +1,154 @@
-
 body {
-    padding: 0;
     margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f5f5f5;
+    padding: 0;
+    background-color: #000;
+    font-family: 'Share Tech Mono', monospace;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    text-align: center;
-    transition: background-color 0.5s;
- 
-    
+    color: #0ff;
+    background-image: linear-gradient(to right, #000, #011);
+    overflow: hidden;
+    animation: fadeIn 1s ease-in;
+}
+
+/* Page fade-in effect */
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.98); }
+    to { opacity: 1; transform: scale(1); }
 }
 
 main {
-    background-color: #ffebcd;
-    padding: 45px;
-    border-radius: 25px;
-    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.2);
-    width: 420px;
-    height: 420px;
-    text-align: center;
-    transition: transform 0.3s;
+    background-color: rgba(0, 255, 255, 0.05);
+    border: 2px solid #0ff;
+    border-radius: 10px;
+    padding: 50px;
+    width: 480px;
+    box-shadow: 0 0 25px #0ff;
+    text-shadow: 0 0 5px #0ff;
+    transition: transform 0.4s ease-in-out;
+    animation: slideUp 0.8s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(60px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
 main:hover {
-    transform: scale(1.02);
+    transform: scale(1.05);
 }
 
 input[type="text"] {
-    height: 32px;
-    width: 250px;
-    border-radius: 24px;
-    padding: 5px;
-    font-size: 16px;
-    text-align: center;
-    border: 2px solid #bdbdbd;
-    transition: box-shadow 0.3s;
+    background: black;
+    color: #0ff;
+    border: 2px solid #0ff;
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: 18px;
+    width: 280px;
+    transition: 0.3s ease;
+    animation: glowPulse 3s infinite alternate;
 }
 
-input[type="text"]:hover, input[type="text"]:focus {
-    box-shadow: 0px 0px 10px rgba(0, 150, 136, 0.5);
+@keyframes glowPulse {
+    from {
+        box-shadow: 0 0 10px #0ff;
+    }
+    to {
+        box-shadow: 0 0 20px #0ff;
+    }
+}
+
+input[type="text"]:focus {
     outline: none;
+    box-shadow: 0 0 20px #0ff, 0 0 10px #0ff inset;
 }
 
 button {
-    height: 36px;
-    width: 120px;
+    background: none;
+    border: 2px solid #0ff;
+    padding: 10px 25px;
+    border-radius: 10px;
+    color: #0ff;
     font-size: 16px;
-    border-radius: 18px;
-    border: none;
+    margin-top: 20px;
     cursor: pointer;
-    background-color: #4caf50;
-    color: white;
-    transition: all 0.3s;
-    margin-top: 18px;
+    position: relative;
+    overflow: hidden;
+    transition: 0.3s ease;
+    animation: glowButton 2s infinite alternate;
+}
+
+@keyframes glowButton {
+    0% { box-shadow: 0 0 8px #0ff; }
+    100% { box-shadow: 0 0 15px #0ff; }
+}
+
+button::after {
+    content: "";
+    background: #0ff;
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    transition: 0.5s;
+}
+
+button:hover::after {
+    left: 0;
 }
 
 button:hover {
-    background-color: #45a049;
-    transform: translateY(-3px);
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    color: black;
+    transform: scale(1.05);
+    box-shadow: 0 0 20px #0ff;
 }
 
 #result {
-    font-size: 26px;
-    font-weight: bold;
-    color: #2c3e50;
+    margin-top: 25px;
+    font-size: 24px;
+    color: #0ff;
     opacity: 0;
     transform: translateY(20px);
-    transition: opacity 0.5s ease-in-out, transform 0.22s ease-in-out;
-    text-align: center;
+    transition: opacity 0.6s ease, transform 0.5s ease;
 }
 
 #result.show {
     opacity: 1;
     transform: translateY(0);
+}
+
+
+.neon-dot {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #0ff;
+    opacity: 0.2;
+    animation: floatDots 10s infinite linear;
+}
+
+@keyframes floatDots {
+    0% {
+        transform: translateY(100vh) scale(0.5);
+        opacity: 0.2;
+    }
+    50% {
+        opacity: 0.4;
+    }
+    100% {
+        transform: translateY(-10vh) scale(1);
+        opacity: 0;
+    }
 }
