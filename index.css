@@ -1,174 +1,113 @@
-/* Global Reset and Theme Setup */
+/* Base layout */
 body {
-
-    
-    padding: 0;
-    background-color: #000;
+    margin: 0;
     font-family: 'Share Tech Mono', monospace;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-    color: #0ff;
-    background-image: linear-gradient(to right, #000, #011);
-    overflow-x: hidden;
-    animation: fadeIn 1s ease-in;
+    height: 100vh;
+    perspective: 1000px;
+    background: radial-gradient(circle at center, #020611, #000);
+    overflow: hidden;
 }
 
-/* Page Entrance Animation */
-@keyframes fadeIn {
-    from { opacity: 0; transform: scale(0.95); }
-    to { opacity: 1; transform: scale(1); }
+/* Light scanline overlay */
+body::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+        to bottom,
+        rgba(0, 255, 255, 0.05),
+        rgba(0, 255, 255, 0.05) 1px,
+        transparent 2px
+    );
+    animation: scan 6s linear infinite;
+    pointer-events: none;
 }
 
-/* Container Box */
+@keyframes scan {
+    to { background-position: 0 100px; }
+}
+
+/* Main 3D container */
 main {
-    background-color: rgba(0, 255, 255, 0.05);
+    background: rgba(0, 255, 255, 0.07);
     border: 2px solid #0ff;
-    border-radius: 10px;
-    padding: 50px;
-    width: 480px;
-    max-width: 90vw;
-    box-shadow: 0 0 25px #0ff;
-    text-shadow: 0 0 5px #0ff;
-    transition: transform 0.4s ease-in-out;
-    animation: slideUp 0.8s ease-out;
+    border-radius: 12px;
+    padding: 35px;
+    width: 450px;
+    box-shadow: 0 0 25px #0ff, inset 0 0 15px #0ff;
+    transform-style: preserve-3d;
+    transition: transform 0.15s ease-out, box-shadow 0.3s ease;
 }
 
-@keyframes slideUp {
-    from { transform: translateY(60px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
-}
-
+/* Glow on hover */
 main:hover {
-    transform: scale(1.03);
+    box-shadow: 0 0 35px #0ff, inset 0 0 25px #0ff;
 }
 
-/* Input Field */
+/* Title */
+h1 {
+    text-align: center;
+    font-size: 26px;
+    color: #0ff;
+    margin-bottom: 20px;
+    text-shadow: 0 0 5px #0ff, 0 0 15px #0ff;
+}
+
+/* Input fields - bright & usable */
 input[type="text"] {
-    background: black;
+    background: rgba(0, 20, 20, 0.9);
     color: #0ff;
     border: 2px solid #0ff;
-    border-radius: 10px;
-    padding: 10px 20px;
+    border-radius: 8px;
+    padding: 12px 15px;
     font-size: 18px;
     width: 100%;
     box-sizing: border-box;
-    transition: 0.3s ease;
-    animation: glowPulse 3s infinite alternate;
-}
-
-@keyframes glowPulse {
-    from { box-shadow: 0 0 10px #0ff; }
-    to { box-shadow: 0 0 20px #0ff; }
+    box-shadow: inset 0 0 10px #0ff;
 }
 
 input[type="text"]:focus {
     outline: none;
-    box-shadow: 0 0 25px #0ff, 0 0 10px #0ff inset;
+    box-shadow: inset 0 0 20px #0ff, 0 0 10px #0ff;
 }
 
-/* Radio Buttons */
+/* Radio buttons */
 input[type="radio"] {
     accent-color: #0ff;
-    transform: scale(1.2);
     cursor: pointer;
-    margin-right: 5px;
 }
 
+/* Labels */
 label {
-    display: inline-block;
-    margin-bottom: 10px;
     cursor: pointer;
-    transition: color 0.3s ease;
+    color: #0ff;
 }
 
-label:hover {
-    color: #00ffffaa;
-    text-shadow: 0 0 5px #0ff;
-}
-
-/* Submit Button */
+/* Button */
 button {
+    margin-top: 15px;
     background: none;
     border: 2px solid #0ff;
-    padding: 12px 30px;
-    border-radius: 10px;
     color: #0ff;
+    padding: 10px 25px;
+    border-radius: 8px;
     font-size: 16px;
-    margin-top: 20px;
     cursor: pointer;
-    position: relative;
-    overflow: hidden;
     transition: 0.3s ease;
-    animation: glowButton 2s infinite alternate;
-}
-
-@keyframes glowButton {
-    0% { box-shadow: 0 0 8px #0ff; }
-    100% { box-shadow: 0 0 15px #0ff; }
-}
-
-button::after {
-    content: "";
-    background: #0ff;
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    transition: 0.5s;
-}
-
-button:hover::after {
-    left: 0;
 }
 
 button:hover {
-    color: black;
-    transform: scale(1.08);
-    box-shadow: 0 0 20px #0ff;
+    background: #0ff;
+    color: #000;
 }
 
-/* Result Output */
+/* Result text */
 #result {
-    margin-top: 25px;
-    font-size: 24px;
+    margin-top: 20px;
+    font-size: 20px;
     color: #0ff;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.6s ease, transform 0.5s ease;
-    text-align: center;
-}
-
-#result.show {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Responsive Enhancements */
-@media (max-width: 600px) {
-    main {
-        padding: 30px 20px;
-        width: 90vw;
-    }
-
-    h1 {
-        font-size: 20px;
-        text-align: center;
-    }
-
-    input[type="text"] {
-        font-size: 16px;
-    }
-
-    button {
-        font-size: 14px;
-        padding: 10px 20px;
-    }
-
-    #result {
-        font-size: 20px;
-    }
+    text-shadow: 0 0 5px #0ff;
 }

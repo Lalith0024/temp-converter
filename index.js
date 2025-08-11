@@ -42,3 +42,15 @@ function showResult(text) {
     void result.offsetWidth; 
     result.classList.add("show");
 }
+// 3D tilt effect
+const mainBox = document.querySelector("main");
+
+document.addEventListener("mousemove", (e) => {
+    const x = (window.innerWidth / 2 - e.pageX) / 25;
+    const y = (window.innerHeight / 2 - e.pageY) / 25;
+    mainBox.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
+});
+
+document.addEventListener("mouseleave", () => {
+    mainBox.style.transform = `rotateY(0deg) rotateX(0deg)`;
+});
